@@ -2,17 +2,18 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
+    mode: "development",
     entry: {
-        'bundle': '../main.js'
+        'bundle': path.resolve(__dirname,"../main.js")
     },
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.resolve(__dirname, '../dist'),
         filename: '[name].js'
     },
     module: {
         rules: [{
             test: /\.scss$/,
-            loader: 'sass-loader'
+            loader: ['style-loader','css-loader','sass-loader']
         }, {
             test: /\.js$/,
             exclude: /node_modules/,
